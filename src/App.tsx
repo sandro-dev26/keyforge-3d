@@ -8,19 +8,29 @@ export default function App() {
   function changeActive() {
     setIsActive(!isActive);
   }
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsActive(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
   return (
     <div>
-      <div
-        className={`${isActive ? "w-full h-screen" : "w-48 h-48 hover:shadow-lg hover:scale-[1.05] border-3 m-4 border-neutral-400/50 rounded-xl shadow-md shadow-black/50 overflow-hidden"} transition-all duration-300 ease-out`}
-        onClick={changeActive}
-      >
+      <div onClick={changeActive}>
         <div
-          className="w-full h-full"
+          className={`${isActive ? "w-full h-screen" : "w-48 h-48 sm:w-30 hover:shadow-lg hover:scale-[1.05] border-3 m-4 border-neutral-400/50 rounded-xl shadow-md shadow-black/50 overflow-hidden"} transition-all duration-300 ease-out overflow-hidden`}
           onClick={(e) => {
             if (isActive) e.stopPropagation();
           }}
         >
-          <Canvas camera={{ position: [0, 3, 5], fov: 45 }}>
+          <Canvas camera={{ position: [0, 3, 7], fov: 45 }}>
             <color attach="background" args={["#dadada"]} />
 
             <ambientLight intensity={1.5} />
