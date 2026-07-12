@@ -20,6 +20,13 @@ export default function Tree() {
       const target = treeRef.current.scale.x - delta * 1.5;
       treeRef.current.scale.setScalar(target);
     }
+
+    const difference = Math.abs(treeRef.current.scale.x - targetScale.current);
+
+    if (difference < 0.01) {
+      treeRef.current.scale.setScalar(targetScale.current);
+      return;
+    }
   });
 
   function increaseSize() {
