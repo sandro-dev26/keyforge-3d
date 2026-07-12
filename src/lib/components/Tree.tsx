@@ -6,19 +6,19 @@ export default function Tree() {
   const treeRef = useRef<THREE.Group>(null);
   const targetScale = useRef(1);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     if (!treeRef.current) {
       return;
     }
 
     if (treeRef.current?.scale.x < targetScale.current) {
-      let target = treeRef.current?.scale.x + 0.015;
-      treeRef.current?.scale.setScalar(target);
+      const target = treeRef.current.scale.x + delta * 1.5;
+      treeRef.current.scale.setScalar(target);
     }
 
     if (treeRef.current?.scale.x > targetScale.current) {
-      let target = treeRef.current?.scale.x - 0.015;
-      treeRef.current?.scale.setScalar(target);
+      const target = treeRef.current.scale.x - delta * 1.5;
+      treeRef.current.scale.setScalar(target);
     }
   });
 

@@ -37,7 +37,7 @@ export default function App() {
               <meshStandardMaterial
                 color="brown"
                 roughness={1}
-                metalness={0.5}
+                metalness={0.75}
                 side={THREE.DoubleSide}
               />
             </mesh>
