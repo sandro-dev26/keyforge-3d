@@ -68,10 +68,22 @@ export default function Tree() {
         <meshStandardMaterial color="brown" />
       </mesh>
 
-      <mesh position={[0, 2, 0]}>
-        <coneGeometry args={[0.75, 3, 32]} />
-        <meshStandardMaterial color="green" />
-      </mesh>
+      <group>
+        <mesh position={[0, 2, 0]}>
+          <coneGeometry args={[0.75, 3, 32]} />
+          <meshStandardMaterial color="green" />
+        </mesh>
+
+        <mesh position={[0, 2.5, 0]}>
+          <coneGeometry args={[0.7, 2.5, 32]} />
+          <meshStandardMaterial color="green" />
+        </mesh>
+
+        <mesh position={[0, 3, 0]}>
+          <coneGeometry args={[0.6, 2, 32]} />
+          <meshStandardMaterial color="green" />
+        </mesh>
+      </group>
     </group>
   );
 }
